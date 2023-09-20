@@ -111,3 +111,18 @@ sudo systemctl enable kibana
 It is always a good idea to put web services behind a web server like Nginx or Apache. So I'll install Nginx.
 
 `sudo apt-get install nginx`
+
+# Installing SSL certificate for Nginx
+
+This command below will create a self-signed key and certificate pair with OpenSSL.
+
+`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt`
+
+Don't forget to fill the 'Common Name' prompt. You need to enter the domain name associated with your server or, more likely, your server’s public IP address.
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/7d8bed6e-bad1-4e93-8683-a046dc289fb4)
+
+As an addition I'm gonna create Diffie-Hellman (DH) group, which is used in negotiating Perfect Forward Secrecy with clients.
+
+`sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
+
