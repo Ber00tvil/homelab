@@ -42,6 +42,8 @@ By default, Elasticsearch can be controlled by anyone who can access the HTTP AP
 
 You can restrict the acces to a specific host, by using eg. Ubuntu’s default firewall, UFW.
 
+\* Be sure to add all ports, that you are using eg. 22
+
 ```bash
 sudo ufw allow from 192.168.0.164 to any port 9999
 sudo ufw enable
