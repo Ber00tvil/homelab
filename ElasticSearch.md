@@ -14,9 +14,9 @@ During the installation read the **output**. It contains a password for your use
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/7fe0470d-d71c-4c11-b1d4-72a67d4d5d64)
 
-Now I'll edit /etc/elasticsearch/elasticsearch.yml.
+Now I'll edit `/etc/elasticsearch/elasticsearch.yml`.
 
-It is a common proactice to change the default port to something different just to make an attacker's life a little bit more annoying.
+It is a common practice to change the default port to something different just to make an attacker's life a little bit more annoying.
 
 In my case the new port is **9999**.
 
@@ -26,3 +26,10 @@ Also I configured an interface Elastic will listen on.
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/9bc3ca9f-fb2c-4622-8746-d4c94af0d6a0)
 
+Now let's start ElasticSearch!
+
+`sudo systemctl start elasticsearch`
+
+If you want ElasticSearch to start every time you boot the system type this:
+
+`sudo systemctl enable elasticsearch`
