@@ -71,3 +71,6 @@ We can see in logs, that conection is closed because of lack of HTTPS.
 If we add `-k` to ignore certificates and change protocol to **HTTPS**, now it will output, that we are 'missing authentication credentials for REST request.' 
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/b6ff3909-4943-433f-90f4-689d6c34bd62)
+
+To solve this problem, we need to authenticate as user **elastic** with the password displayed when we were installing ElasticSearch.
+
