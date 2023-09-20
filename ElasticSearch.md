@@ -49,4 +49,3 @@ sudo ufw status
 ```
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/0021c066-9a15-43ff-9565-cae2faa402f4)
-
