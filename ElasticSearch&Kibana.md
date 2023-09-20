@@ -93,10 +93,21 @@ After installation we need to create enrollment ticket for kibana.
 
 This token configures authentication between Kibana and Elasticsearch.
 
-Now to set up kibana run the script and give it the token.
+Now to set up kibana run the script and paste in the token.
 
 `sudo /usr/share/kibana/bin/kibana-setup`
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/fac2bca3-eb20-4bf0-8b91-36f715f6da45)
 
 Now you can start Kibana (it takes a while) and enable it to start automatically whenever system boots. 
+
+```bash
+sudo service kibana start
+sudo systemctl enable kibana
+```
+
+# Putting Kibana behin Nginx
+
+It is always a good idea to put web services behind a web server like Nginx or Apache. So I'll install Nginx.
+
+`sudo apt-get install nginx`
