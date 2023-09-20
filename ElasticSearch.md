@@ -51,3 +51,23 @@ sudo ufw status
 ```
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/0021c066-9a15-43ff-9565-cae2faa402f4)
+
+# Connecting to ElasticSearch
+
+Now it's time to verify if everything was set up correctly
+
+`curl -X GET 'http://192.168.0.235:9999'`
+
+And this will fail. By default Elastic requires HTTPS.
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/fadff29d-378b-4dac-93b3-8a2aa1291cf2)
+
+We can see in logs, that conection is closed because of lack of HTTPS.
+
+`sudo cat /var/log/elasticsearch/elasticsearch.log`
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/3126747a-88da-494e-b495-1869eb537cea)
+
+If we add `-k` to ignore certificates and change protocol to **HTTPS**, now it will output, that we are missing authentication. 
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/b6ff3909-4943-433f-90f4-689d6c34bd62)
