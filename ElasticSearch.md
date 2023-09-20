@@ -74,3 +74,6 @@ If we add `-k` to ignore certificates and change protocol to **HTTPS**, now it w
 
 To solve this problem, we need to authenticate as user **elastic** with the password displayed when we were installing ElasticSearch.
 
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/dd63ad6c-8257-4cba-92ab-2ccb7f81f39e)
+
+And now everything works!
