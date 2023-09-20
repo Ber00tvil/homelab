@@ -42,8 +42,7 @@ By default, Elasticsearch can be controlled by anyone who can access the HTTP AP
 
 You can restrict the acces to a specific host, by using eg. Ubuntu’s default firewall, UFW.
 
-\* Be sure to add all ports, that you are using eg. 22
-
+_\* Be sure to add all ports, that you are using eg. 22_
 ```bash
 sudo ufw allow from 192.168.0.164 to any port 9999
 sudo ufw enable
@@ -77,3 +76,27 @@ To solve this problem, we need to authenticate as user **elastic** with the pass
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/dd63ad6c-8257-4cba-92ab-2ccb7f81f39e)
 
 And now everything works!
+
+# Installing Kibana
+
+Kibana is a web interface for ElasticSearch.
+
+_\* It will take a long time to install_
+
+`sudo apt install kibana`
+
+After installation we need to create enrollment ticket for kibana.
+
+`sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana`
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/d83f1fdb-8dfd-4048-b5ba-3d13320664df)
+
+This token configures authentication between Kibana and Elasticsearch.
+
+Now to set up kibana run the script and give it the token.
+
+`sudo /usr/share/kibana/bin/kibana-setup`
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/fac2bca3-eb20-4bf0-8b91-36f715f6da45)
+
+Now you can start Kibana (it takes a while) and enable it to start automatically whenever system boots. 
