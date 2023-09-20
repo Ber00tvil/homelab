@@ -1,4 +1,4 @@
-# Setting up ElasticSearch
+# Installing ElasticSearch
 
 Elasticsearch is a platform for distributed search and analysis of data in real time. It is a popular choice due to its usability, powerful features, and scalability.
 
@@ -13,6 +13,8 @@ sudo apt install elasticsearch -y
 During the installation read the **output**. It contains a password for your user!
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/7fe0470d-d71c-4c11-b1d4-72a67d4d5d64)
+
+# Configuring ElasticSearch
 
 Now I'll edit `/etc/elasticsearch/elasticsearch.yml`.
 
@@ -33,3 +35,18 @@ Now let's start ElasticSearch!
 If you want ElasticSearch to start every time you boot the system type this:
 
 `sudo systemctl enable elasticsearch`
+
+# Securing Elastic Search
+
+By default, Elasticsearch can be controlled by anyone who can access the HTTP API.
+
+You can restrict the acces to a specific host, by using eg. Ubuntu’s default firewall, UFW.
+
+```bash
+sudo ufw allow from 192.168.0.164 to any port 9999
+sudo ufw enable
+sudo ufw status
+```
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/0021c066-9a15-43ff-9565-cae2faa402f4)
+
