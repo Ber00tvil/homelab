@@ -167,11 +167,11 @@ add_header X-XSS-Protection "1; mode=block";
 
 Create a domain in Nginx.
 
-`sudo mkdir -p /var/www/elastic.com/html`
+`sudo mkdir -p /var/www/test_lab_elastic.com/html`
 
 Create Nginx configuration file.
 
-`sudo vim /etc/nginx/sites-available/elastic.com.conf`
+`sudo vim /etc/nginx/sites-available/test_lab_elastic.com.conf`
 
 Map all domain requests that match **elastic.com** over port 443. Redirect all trafic from port 80 to 443.
 
@@ -182,10 +182,10 @@ server {
         include snippets/self-signed.conf;
         include snippets/ssl-params.conf;
 
-        root /var/www/elastic.com/html;
+        root /var/www/test_lab_elastc.com/html;
         index index.html index.htm index.nginx-debian.html;
 
-        server_name elastic.com www.elastic.com;
+        server_name test_lab_elastc.com www.test_lab_elastc.com;
 
         location / {
                 try_files $uri $uri/ =404;
@@ -196,7 +196,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name elastic.com www.elastic.com;
+    server_name test_lab_elastc.com www.test_lab_elastc.com;
 
     return 302 https://$server_name$request_uri;
 }
