@@ -116,7 +116,7 @@ It is always a good idea to put web services behind a web server like Nginx or A
 
 This command below will create a self-signed key and certificate pair with OpenSSL.
 
-`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-ssl-cert.crt`
+`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-ssl-cert.key -out /etc/ssl/certs/nginx-ssl-cert.crt`
 
 Don't forget to fill the '**Common Name**' prompt. You need to enter the domain name associated with your server or, more likely, your server’s public IP address.
 
