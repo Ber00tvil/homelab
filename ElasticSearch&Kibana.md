@@ -133,7 +133,33 @@ As an addition I'm gonna create Diffie-Hellman (DH) group, which is used in nego
 Within this file, you need to set the ssl_certificate directive to your certificate file and the ssl_certificate_key to the associated key. This will look like the following:
 
 ```bash
-ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
-ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+ssl_certificate /etc/ssl/certs/nginx-ssl-cert.crt;
+ssl_certificate_key /etc/ssl/private/nginx-ssl-cert.key;
 ```
 
+Next step is to define some SSL settings.
+
+`sudo vim /etc/nginx/snippets/ssl-params.conf`
+
+For our needs we will use already prepared settings from [https://cipherlist.eu/](https://cipherlist.eu/).
+
+These settings may come at the cost of a compability. But since it is a home project we can copy-paste everything.
+
+```bash
+ssl_protocols TLSv1.3;# Requires nginx >= 1.13.0 else use TLSv1.2
+ssl_prefer_server_ciphers on;
+ssl_dhparam /etc/nginx/dhparam.pem; # openssl dhparam -out /etc/nginx/dhparam.pem 4096
+ssl_ciphers EECDH+AESGCM:EDH+AESGCM;
+ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
+ssl_session_timeout  10m;
+ssl_session_cache shared:SSL:10m;
+ssl_session_tickets off; # Requires nginx >= 1.5.9
+ssl_stapling on; # Requires nginx >= 1.3.7
+ssl_stapling_verify on; # Requires nginx => 1.3.7
+resolver $DNS-IP-1 $DNS-IP-2 valid=300s;
+resolver_timeout 5s;
+add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+add_header X-XSS-Protection "1; mode=block";
+```
