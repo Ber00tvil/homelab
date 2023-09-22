@@ -163,3 +163,57 @@ add_header X-Frame-Options DENY;
 add_header X-Content-Type-Options nosniff;
 add_header X-XSS-Protection "1; mode=block";
 ```
+# Adjusting the Nginx Configuration to Use SSL
+
+Create a domain in Nginx.
+
+`sudo mkdir -p /var/www/elastic.com/html`
+
+Create Nginx configuration file.
+
+`sudo vim /etc/nginx/sites-available/elastic.com.conf`
+
+Map all domain requests that match **elastic.com** over port 443. Redirect all trafic from port 80 to 443.
+
+```bash
+server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        include snippets/self-signed.conf;
+        include snippets/ssl-params.conf;
+
+        root /var/www/elastic.com/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name elastic.com www.elastic.com;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name elastic.com www.elastic.com;
+
+    return 302 https://$server_name$request_uri;
+}
+```
+
+We need to adjust **ufw firewall**, so people can access the site.
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/77fc8e86-a8b5-413e-a85e-0e31955f5e72)
+
+# Run Nginx
+
+First, make sure there are no mistakes in configurations.
+
+`sudo nginx -t`
+
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/9b97fc13-8737-4372-8e5e-deeee4c26ebc)
+
+# Testing Encryption
+
+`https://server_domain_or_IP`
