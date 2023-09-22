@@ -24,7 +24,7 @@ In my case the new port is **9999**.
 
 Also I configured an interface Elastic will listen on.
 
-`sudo nano /etc/elasticsearch/elasticsearch.yml`
+`sudo vim /etc/elasticsearch/elasticsearch.yml`
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/9bc3ca9f-fb2c-4622-8746-d4c94af0d6a0)
 
@@ -118,11 +118,22 @@ This command below will create a self-signed key and certificate pair with OpenS
 
 `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt`
 
-Don't forget to fill the 'Common Name' prompt. You need to enter the domain name associated with your server or, more likely, your server’s public IP address.
+Don't forget to fill the '**Common Name**' prompt. You need to enter the domain name associated with your server or, more likely, your server’s public IP address.
 
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/7d8bed6e-bad1-4e93-8683-a046dc289fb4)
 
 As an addition I'm gonna create Diffie-Hellman (DH) group, which is used in negotiating Perfect Forward Secrecy with clients.
 
 `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
+
+# Creating a Configuration Snippet Pointing to the SSL Key and Certificate
+
+`sudo nano /etc/nginx/snippets/self-signed.conf`
+
+Within this file, you need to set the ssl_certificate directive to your certificate file and the ssl_certificate_key to the associated key. This will look like the following:
+
+```bash
+ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+```
 
