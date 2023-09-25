@@ -226,3 +226,7 @@ Restart Nginx
 Access the website
 
 `https://server_domain_or_IP`
+
+Upon visiting the site, warning will be displayed.
+
+![Uploading image.png…]()
