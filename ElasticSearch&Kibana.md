@@ -220,4 +220,9 @@ This error is expected, don't worry.
 
 # Testing Encryption
 
+Restart Nginx
+`nginx -s reload`
+
+Access the website
+
 `https://server_domain_or_IP`
