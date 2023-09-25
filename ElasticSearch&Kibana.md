@@ -229,4 +229,4 @@ Access the website
 
 Upon visiting the site, warning will be displayed.
 
-![Uploading image.png…]()
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/0aebf440-74a3-44da-89fa-b8e567833642)
