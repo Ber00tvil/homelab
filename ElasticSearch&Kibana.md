@@ -214,7 +214,7 @@ First, make sure there are no mistakes in configurations.
 
 `sudo nginx -t`
 
-![image](https://github.com/Ber00tvil/homelab/assets/102535253/9b97fc13-8737-4372-8e5e-deeee4c26ebc)
+![image](https://github.com/Ber00tvil/homelab/assets/102535253/e9b5d98f-b774-4e4f-ae44-68461a9308f8)
 
 # Testing Encryption
 
