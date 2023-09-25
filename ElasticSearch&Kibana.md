@@ -171,9 +171,10 @@ Create a domain in Nginx.
 
 `sudo mkdir -p /var/www/test_lab_elastic.com/html`
 
-Create Nginx configuration file.
+Backup config file 
 
-`sudo vim /etc/nginx/sites-available/test_lab_elastic.com.conf`
+`sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak`
+`sudo vim /etc/nginx/sites-available/default`
 
 Map all domain requests that match **elastic.com** over port 443. Redirect all trafic from port 80 to 443.
 
@@ -214,6 +215,7 @@ First, make sure there are no mistakes in configurations.
 
 `sudo nginx -t`
 
+This error is expected, don't worry.
 ![image](https://github.com/Ber00tvil/homelab/assets/102535253/e9b5d98f-b774-4e4f-ae44-68461a9308f8)
 
 # Testing Encryption
